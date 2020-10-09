@@ -1,10 +1,10 @@
-import * as uuid from 'uuid'
-import handler from './libs/handler-lib'
-import dynamoDb from './libs/dynamodb-lib'
+import * as uuid from 'uuid';
+import handler from './libs/handler-lib';
+import dynamoDb from './libs/dynamodb-lib';
 
 export const main = handler(async (event, context) => {
   // Request body is passed in as a JSON encoded string in 'event.body'
-  const data = JSON.parse(event.body)
+  const data = JSON.parse(event.body);
   const params = {
     TableName: process.env.tableName,
     // 'Item' contains the attributes of the item to be created
@@ -20,9 +20,9 @@ export const main = handler(async (event, context) => {
       imageUrl: data.imageUrl,
       yumFactor: data.yumFactor
     }
-  }
+  };
 
-  await dynamoDb.put(params)
+  await dynamoDb.put(params);
 
-  return params.Item
-})
+  return params.Item;
+});
